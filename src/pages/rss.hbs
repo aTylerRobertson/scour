@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0">
+<channel>
+  <title>{{seo.title}}</title>
+  <link>{{seo.url}}</link>
+  <description>{{seo.description}}</description>
+    {{#each items}}
+    <item>
+      <title>{{this.title}}</title>
+      <guid>{{this.guid}}</guid>
+      <pubDate>{{this.added}}</pubDate>
+      <link>{{this.source}}</link>
+      <description>{{this.description}}</description>
+    </item>
+    {{/each}}
+</channel>
+</rss>

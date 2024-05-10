@@ -1,0 +1,59 @@
+{{> header seo=seo}}
+        
+        <h2>add a page to the collection</h2>
+        {{#if message}}
+          <h3>
+            {{{message}}}
+          </h3>
+        {{/if}}
+          
+        <form class="add-new-item" method="post">
+          <label for="title">
+            title
+          </label>
+          <input id="title" name="title" required="required" type="text" value="{{title}}" placeholder="Example Website"><br/>
+
+          <label for="guid">
+            guid
+          </label>
+          <input id="guid" name="guid" required="required" type="text" value="{{guid}}" placeholder="example-site"><br/>
+
+          <label for="source">
+            source
+          </label>
+          <input id="source" name="source" required="required" type="text" value="{{source}}" placeholder="https://example.com"><br/>
+            
+          <input id="key" name="key" type="hidden" value="{{key}}" />
+          <button type="submit">submit</button>
+        </form>
+      
+        
+        <details>
+          <summary>bookmarklet</summary>
+          <input id="bookmarklet" />
+        </details>
+    
+    
+        <script type="text/javascript">
+          const title = document.querySelector("#title");
+          const guid = document.querySelector("#guid");
+
+          const guidify = (text) => {
+            return text.replace(/\s/g,"-").replace(/[^\w-]/g,'').replace(/\//g,'').toLowerCase();
+          }
+
+          const updateguid = () => {
+            const guidifiedTitle = guidify(title.value);
+            if (guid.value == '') {
+              guid.value = guidifiedTitle;
+            }
+          }
+
+          if (window.location.href.indexOf("?key=") > -1) {
+            document.querySelector("#bookmarklet").value = `javascript: (() => { window.open(\`${window.location.href}&title=\${document.title}&source=\${window.location.href}\`); })();`;
+          }
+
+          title.addEventListener("change", updateguid);
+        </script>
+
+{{> footer}}

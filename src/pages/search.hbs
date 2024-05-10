@@ -1,0 +1,32 @@
+{{> header seo=seo}}
+
+  {{#if message}}
+    <section>
+        <h2>
+          {{{message}}}
+        </h2>
+    </section>
+  {{/if}}
+
+  {{#if results}}
+    <section id="results">
+      <ol>
+        {{#each results}}
+          <li>
+            <a href="{{this.source}}">
+              {{this.title}}
+            </a>
+            <span class="guid">
+              <a href="/cache/{{this.guid}}">view cached page</a></span>
+            <div class="details">
+              <blockquote>
+                {{{this.excerpt}}}
+              </blockquote>
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+    </section>
+  {{/if}}
+
+{{> footer}}
