@@ -1,0 +1,36 @@
+{{> header seo=seo}}
+  <section>
+    {{#if message}}
+      <h2>
+        {{{message}}}
+      </h2>
+    {{else}}
+      <p>
+        <b>This isn't like other search engines.</b> Arguably, it's worse. 
+      </p>
+      <p>
+        You won't find any ads, AI chatbots, or fancy algorithms designed for maximum profit. Instead, what you'll find here are pages that have been collected by a <i>real human (<a href="{{seo.authorURL}}">this human!</a>)</i> based on their own interests, pet peeves, and foibles.
+      </p>
+      <p>
+        <b>Think of it as less of a "search engine", and more of a "search bicycle".</b>
+      </p>
+      <p>
+        When you search, this page will return <b>only pages from the collection which contain the text you searched for</b>, in order of <b>how many times that text appears on the page</b>. That's it.
+      </p>
+    {{/if}}
+  </section>
+
+  {{#if latest}}
+    <section id="latest">
+      <h2>latest additions:</h2>
+      <ul>
+        {{#each latest}}
+          <li><a href="{{this.source}}">{{this.title}}</a></li>
+        {{/each}}
+      </ul>
+    </section>
+  {{/if}}
+
+    <!-- 👋 hey! tyler here, this is my tracking code just to see which of my projects are getting used. feel free to remove it! -->
+    <script src="https://tyler-visitor-tracker.glitch.me/hey.js"></script>
+{{> footer}}
