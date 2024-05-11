@@ -92,7 +92,7 @@ const search = (query) => {
     // Combine and format the results
     const results = [...fullMatches, ...partialMatches];
     results.forEach((item) => {
-      const regex = new RegExp(`[^\n]*(?:${query.replace(/ /g, "|")})[^\n]*`, "i");
+      const regex = new RegExp(`[^\n]*(?:${query.trim().replace(/ /g, "|")})[^\n]*`, "i");
       const excerpt = item.contents.match(regex)[0].replace(partialMatchRegex,"<b>$1</b>");
       item.excerpt = excerpt;
     });

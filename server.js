@@ -51,7 +51,7 @@ fastify.all("/", (request, reply) => {
     try {
       const results = utils.search(params.query);
       params.results = results.results;
-      params.message = `found ${
+      params.message = results.results ? `found ${
         results.full
           ? `${results.full} full match${results.full == 1 ? "" : "es"}`
           : ``
@@ -61,7 +61,7 @@ fastify.all("/", (request, reply) => {
               results.partial == 1 ? "" : "es"
             }`
           : ``
-      } for "${params.query}"`;
+      } for "${params.query}"` : `Nothing found for "${params.query}", sorry!`;
       return reply.view("search", params);
     } catch (err) {
       params.message = err;
