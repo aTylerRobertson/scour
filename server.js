@@ -51,7 +51,7 @@ fastify.all("/", (request, reply) => {
     try {
       const results = utils.search(params.query);
       params.results = results.results;
-      params.message = results.results > 0 ? `found ${
+      params.message = results.results.length ? `found ${
         results.full
           ? `${results.full} full match${results.full == 1 ? "" : "es"}`
           : ``
